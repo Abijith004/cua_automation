@@ -6,8 +6,8 @@ load_dotenv()
 
 TOKEN = os.getenv("GITHUB_TOKEN")
 USER = os.getenv("GITHUB_USER")
-PATH = os.getenv("DESKTOP_PATH", "~/Desktop")
-REPO = "cua-automation-repo"
+PATH = ""
+REPO = "cua_automation"
 
 def run():
     if not TOKEN:
@@ -18,7 +18,7 @@ def run():
     print("=== Connected to GitHub ===")
 
     # List files
-    url = f"https://api.github.com/repos/{USER}/{REPO}/contents/{PATH}?ref=branch_name"
+    url = f"https://api.github.com/repos/{USER}/{REPO}/contents/{PATH}?ref=main"
 
     r = requests.get(url, headers=headers)
     if r.status_code == 200:
